@@ -3,16 +3,20 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
+    private String date;
     private Double first, second;
     private Boolean isOperationClick;
     private Integer operation;
+    private Button btnSend;
 
 
     @Override
@@ -20,6 +24,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text_view);
+        btnSend = findViewById(R.id.btn_send);
+        onClickListener();
+    }
+
+    private void onClickListener() {
+        btnSend.setOnClickListener(view -> {
+            Intent i = new Intent(MainActivity.this, SecondActivity.class);
+            i.putExtra("testNameData", date);
+            startActivity(i);
+            finish();
+        });
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -124,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btn_clear:
+                btnSend.setVisibility(View.INVISIBLE);
                 textView.setText("0");
                 first = 0.0;
                 second = 0.0;
@@ -152,22 +168,28 @@ public class MainActivity extends AppCompatActivity {
                 first = Double.parseDouble(textView.getText().toString());
                 break;
             case R.id.btn_equal:
+
+                btnSend.setVisibility(View.VISIBLE);
                 second = Double.parseDouble(textView.getText().toString());
                 if (operation== R.id.btn_plus){
                     double result = first + second;
                     textView.setText(Double.toString(result));
+                    date = textView.getText().toString();
                     break;
                 } else if (operation== R.id.btn_minus){
                     double result = first - second;
                     textView.setText(Double.toString(result));
+                    date = textView.getText().toString();
                     break;
                 }else if (operation== R.id.btn_times){
                     double result = first * second;
                     textView.setText(Double.toString(result));
+                    date = textView.getText().toString();
                     break;
                 } else if (operation== R.id.btn_divided) {
                     double result = first / second;
                     textView.setText(Double.toString(result));
+                    date = textView.getText().toString();
                     break;
                 }
         }

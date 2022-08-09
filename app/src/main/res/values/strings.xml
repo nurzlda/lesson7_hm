@@ -20,4 +20,13 @@
     <string name="zero">0</string>
     <string name="full_stop">.</string>
     <string name="equal">=</string>
+    <string name="policies">Policies</string>
+    <string name="policy">Policy</string>
+    <string name="prd_ctgr">Product Category</string>
+    <string name="orgn_cnt">Origin Country</string>
+    <string name="brand">Brand</string>
+    <string name="current_policies">Current Policies</string>
+    <string name="export_as_csv">Export as CSV</string>
+    <string name="send">send</string>
+
 </resources>
